@@ -1,3 +1,8 @@
+"""Analyze some census data.
+
+Some helper functions and a lot of mapreduces.
+"""
+
 import glob
 import csv
 import re
@@ -141,8 +146,9 @@ def compare_totals(records):
   
   
 def perc_diff_per_column(joined_records, colnum):
-  """
-  
+  """Find the percentage difference between resident & worksite jobs
+  in the joined data, aggregated over the given key column number.
+  key is the unique value of the column, value is the % difference.
   """
   def mapperx((key, val)):
     if key[1] != '0000': 
@@ -157,10 +163,11 @@ def perc_diff_per_column(joined_records, colnum):
 
 
 def sex_differences_by_occupation(data):
+  """Find which occupation codes have the largest gender skews
+  in either direction.  To do this, we compute P(sex | occupation)
+  for each occupation, returning key = occupation code, values =
+  (male_prob, female_prob)..
   """
-  
-  """
-  # Want to find: P(sex | occup) and sort by this.
   def mapperx((key, val)):
     # Key by occupation, output (sex, count).
     yield key[1], (key[2], val)
@@ -174,6 +181,12 @@ def sex_differences_by_occupation(data):
 
 
 def state_occupation_rows(joined_data, job_names):
+  """For each state, generate a vector where each component is
+  the count of that occupation; the columns are the keys in
+  job_names, sorted by occupation code, and are the same for
+  every output.  key is occupation code, value is the vector
+  as a Python list.
+  """
   all_codes = sorted(job_names)
   def mapperx((key, val)):
     if key[1] != '0000':
@@ -187,6 +200,9 @@ def state_occupation_rows(joined_data, job_names):
   
 
 def dimensionality_reduction(occupation_rows, job_names):
+  """Given the results of `state_occupation_rows` above, create a numpy
+  matrix from it and start a basic dimensionality reduction using Singular
+  Value Decomposition."""
   import numpy as np
   from matplotlib import pyplot as plt
   arr = np.array([vals for code, vals in occupation_rows])
@@ -196,18 +212,14 @@ def dimensionality_reduction(occupation_rows, job_names):
   # and shows the baseline proportions that exist between various occupations, independent of state.
   # The next largest vector explains per state differences:
   plt.plot(s); plt.title("Eigenvalues"); plt.grid(); plt.show()
-
-
+  # and so on and so forth....
 
 
 def main():
   # w = worksite data, r = residence data
   wdata, rdata, job_names = loaddata()
   joined = joindata(wdata, rdata)
-  
-  # Let's ask our first question: something like an SVD on states/occupations.
-  # We may want to pivot e.g. state or occupation to demographic later.
-  
+  print "data loaded, pdb started:"
   pdb.set_trace()
   
   
