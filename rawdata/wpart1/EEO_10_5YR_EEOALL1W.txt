@@ -1,0 +1,30 @@
+EEO-ALL01W
+EEO 1w. Detailed Census Occupation by Sex and Race/Ethnicity for Worksite Geography 
+
+Universe: Civilians employed at work 16 years and over
+
+The EEO Tabulation is sponsored by four Federal agencies consisting of the Equal Employment Opportunity Commission (EEOC), the Employment Litigation Section of the Civil Rights Division at the Department of Justice (DOJ), the Office of Federal Contract Compliance Programs (OFCCP) at the Department of Labor, and the Office of Personnel Management (OPM).
+
+Source:  U.S. Census Bureau, 2006-2010 American Community Survey
+
+
+Explanation of Symbols:
+An '**' entry in the margin of error column indicates that either no sample observations or too few sample observations were available to compute a standard error and thus the margin of error. A statistical test is not appropriate.
+An '-' entry in the estimate column indicates that either no sample observations or too few sample observations were available to compute an estimate, or a ratio of medians cannot be calculated because one or both of the median estimates falls in the lowest interval or upper interval of an open-ended distribution.
+An '-' following a median estimate means the median falls in the lowest interval of an open-ended distribution.
+An '+' following a median estimate means the median falls in the upper interval of an open-ended distribution.
+An '***' entry in the margin of error column indicates that the median falls in the lowest interval or upper interval of an open-ended distribution. A statistical test is not appropriate.
+An '*****' entry in the margin of error column indicates that the estimate is controlled. A statistical test for sampling variability is not appropriate.
+An 'N' entry in the estimate and margin of error columns indicates that data for this geographic area cannot be displayed because the number of sample cases is too small.
+An '(X)' means that the estimate is not applicable or not available.
+
+
+The U.S. Census Bureau collects race data in accordance with guidelines provided by the U.S. Office of Management and Budget (OMB). Except for the total, all race and ethnicity categories are mutually exclusive. "Black" refers to Black or African American; "AIAN" refers to American Indian and Alaska Native; and "NHPI" refers to Native Hawaiian and Other Pacific Islander. The reference to "Hawaii only" indicates that these columns are only tabulated for areas in the state of Hawaii. "Balance of Not Hispanic or Latino" includes the balance of non-Hispanic individuals who reported multiple races or reported Some Other Race alone.  For more information on race and Hispanic origin, see the Subject Definitions at http://www.census.gov/acs/www/data_documentation/documentation_main/.
+
+Race and Hispanic origin are separate concepts on the American Community Survey. "White alone Hispanic or Latino" includes respondents who reported Hispanic or Latino origin and reported race as "White" and no other race. "All other Hispanic or Latino" includes respondents who reported Hispanic or Latino origin and reported a race other than "White," either alone or in combination.  To get a total for "Hispanic or Latino," add the two columns for "White alone Hispanic or Latino" and "All other Hispanic or Latino."
+
+Occupation codes are 4-digit codes and are based on Standard Occupational Classification 2010.
+
+Data are based on a sample and are subject to sampling variability. The degree of uncertainty for an estimate arising from sampling variability is represented through the use of a margin of error. The value shown here is the 90 percent margin of error. The margin of error can be interpreted roughly as providing a 90 percent probability that the interval defined by the estimate minus the margin of error and the estimate plus the margin of error (the lower and upper confidence bounds) contains the true value. In addition to sampling variability, the ACS estimates are subject to nonsampling error (for a discussion of nonsampling variability, see Accuracy of the Data).  The effect of nonsampling error is not represented in these tables.
+
+
