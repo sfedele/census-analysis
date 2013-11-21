@@ -90,9 +90,10 @@ def loaddata():
   for occupation_code, label_set in mapping:
     label = list(label_set)[0]
     x = re.split(r' \d\d\d\d ', label)[0]
-    if len(x) > 70:
-      # 70 character cutoff, simple ellipses:
-      x = x[:67] + "..."
+    CHAR_CUTOFF = 100
+    if len(x) > CHAR_CUTOFF:
+      # simple ellipses if label is too long
+      x = x[:CHAR_CUTOFF-3] + "..."
     job_names[occupation_code] = x
 
   return wdata, rdata, job_names
@@ -185,7 +186,7 @@ def state_occupation_rows(joined_data, job_names):
   the count of that occupation; the columns are the keys in
   job_names, sorted by occupation code, and are the same for
   every output.  key is occupation code, value is the vector
-  as a Python list.
+  as a Python list.  All values have the same list length.
   """
   all_codes = sorted(job_names)
   def mapperx((key, val)):
@@ -197,28 +198,12 @@ def state_occupation_rows(joined_data, job_names):
       xs[occupation_code] += count
     yield [xs.get(k, 0) for k in all_codes]
   return mr.mapreducex(mapperx, reducerx, joined_data)
-  
-
-def dimensionality_reduction(occupation_rows, job_names):
-  """Given the results of `state_occupation_rows` above, create a numpy
-  matrix from it and start a basic dimensionality reduction using Singular
-  Value Decomposition."""
-  import numpy as np
-  from matplotlib import pyplot as plt
-  arr = np.array([vals for code, vals in occupation_rows])
-  U, s, V = np.linalg.svd(arr, full_matrices=False)
-  # This shows almost all of the variance is explained by a single vector.
-  # This vector corresponds to population (California, New York, Texas have the largest values)
-  # and shows the baseline proportions that exist between various occupations, independent of state.
-  # The next largest vector explains per state differences:
-  plt.plot(s); plt.title("Eigenvalues"); plt.grid(); plt.show()
-  # and so on and so forth....
 
 
 def main():
   # w = worksite data, r = residence data
   wdata, rdata, job_names = loaddata()
-  joined = joindata(wdata, rdata)
+  joined_data = joindata(wdata, rdata)
   print "data loaded, pdb started:"
   pdb.set_trace()
   
